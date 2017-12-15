@@ -1,0 +1,17 @@
+<h1>Other users who added <%= @song.artist.titleize %> - <%= @song.title.titleize %></h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Times Added</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |u| %>
+    <tr>
+      <td> <a href="<%= user_path u.id %>"><%= u.fname.capitalize %> <%= u.lname.capitalize %></a></td>
+      <td><%= u.songs_added.where(artist:@song.artist).count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

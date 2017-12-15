@@ -1,0 +1,27 @@
+<h1>Register</h1>
+<form action="<%= register_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>First Name</p>
+  <input type="text" id="fname"name="user[fname]">
+  <p>Last Name</p>
+  <input type="text" id="lname"name="user[lname]">
+  <p>Email</p>
+  <input type="email" id="email"name="user[email]">
+  <p>Password</p>
+  <input type="password" id="password"name="user[password]">
+  <p>Password Confirmation</p>
+  <input type="password" id="password_confirmation"name="user[password_confirmation]">
+  <button type="submit" name="button">Register</button>
+</form>
+
+<hr>
+
+<h1>Login</h1>
+<form action="<%= login_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Email</p>
+  <input type="email" name = "email">
+  <p>Password</p>
+  <input type="password" name = "password">
+  <button type="submit" name="login">Login</button>
+</form>

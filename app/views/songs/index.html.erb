@@ -1,0 +1,38 @@
+<h1>Welcome, <%= current_user.fname %>!</h1>
+<h3>All Available Songs:</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Title</th>
+      <th>Number of Times Added to a Playlist</th>
+      <th>Add to My Playlist</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for song in @songs %>
+    <tr>
+      <td><%= song.artist.titleize %></td>
+      <td><a href="<%= song_path song.id %>"><%= song.title.titleize %></a></td>
+      <td><%= song.playlists_added_to.count %></td>
+      <td>
+        <form action="<%= add_playlist_path %>" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="playlist[song_id]" value="<%= song.id %>">
+          <input type="submit" name="Add" value="Add to Playlist">
+        </form>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Add a Song to the Database</h1>
+<form action="<%= create_song_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Artist</p>
+  <input type="text" name="song[artist]">
+  <p>Song Title</p>
+  <input type="text" name="song[title]">
+  <button type="submit" name="createsong">Add Song</button>
+</form>

@@ -1,0 +1,19 @@
+<h1><%= @user.fname.capitalize %> <%= @user.lname.capitalize %>'s Playlist</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Title</th>
+      <th>Times Added</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @songs.each do |s| %>
+      <tr>
+        <td><%= s.artist.titleize %></td>
+        <td><%= s.title.titleize %></td>
+        <td><%= s.playlists_added_to.where(fname:@user.fname).count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
